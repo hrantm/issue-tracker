@@ -19,7 +19,7 @@ const newIssue = () => {
         formState: { errors },
         } = useForm<IssueForm>()    
     const onSubmit: SubmitHandler<IssueForm> = async (data) => {
-        await axios.post('/issues/new', data)
+        const res = await axios.post('/api/issues', data)
         router.push('/issues')
     }
     return (
