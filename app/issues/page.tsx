@@ -3,14 +3,15 @@ import Link from 'next/link'
 import React from 'react'
 import prisma from '@/prisma/client'
 import IssueStatusBadge from '../components/IssueStatusBadge'
+import delay from 'delay'
+import IssueActions from './issueActions'
 
 const IssuesPage = async () => {
+    await delay(2000)
     const issues = await prisma.issue.findMany()
     return (
       <div>   
-          <div className='mb-5'>
-            <Button><Link href='/issues/new'>New Issue</Link></Button>
-          </div>
+          <IssueActions/>
           <Table.Root variant='surface'>
             <Table.Header>
               <Table.Row>
