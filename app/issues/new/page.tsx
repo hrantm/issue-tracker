@@ -1,6 +1,7 @@
 'use client';
 import { Button, TextArea, TextField } from '@radix-ui/themes'
 import axios from 'axios';
+import delay from 'delay';
 import { useRouter } from 'next/navigation';
 import React from 'react'
 import { useForm, SubmitHandler } from "react-hook-form"
@@ -10,7 +11,8 @@ type IssueForm = {
     description: string
 }
 
-const newIssue = () => {
+const newIssue = async () => {
+    // await delay(2000)
     const router = useRouter();
     const {
         register,

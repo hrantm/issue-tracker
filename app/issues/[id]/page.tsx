@@ -1,12 +1,13 @@
 import React from 'react'
 import prisma from '@/prisma/client'
 import { notFound } from 'next/navigation'
-
+import delay from 'delay'
 interface Props {
     params: {id: string}
 }
 
 const IssueDetails = async ({params}: Props) => {
+    // await delay(2000)
     const issue = await prisma.issue.findFirst({
         where: {id: parseInt(params.id)}
     })
