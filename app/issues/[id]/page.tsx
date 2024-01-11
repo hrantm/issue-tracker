@@ -20,8 +20,8 @@ const IssueDetails = async ({params}: Props) => {
         notFound()
     }
     return (
-        <Grid columns={{initial: '1', md: '2'}} gap='5'>
-            <Box className='max-w-xl'>
+        <Grid columns={{initial: '1', sm: '5'}} gap='5'>
+            <Box className='md:col-span-4'>
                 <Heading>{issue.title}</Heading>
                 <Flex className='my-2 space-x-3'>                
                     <IssueStatusBadge status={issue.status}/>
@@ -31,16 +31,21 @@ const IssueDetails = async ({params}: Props) => {
                     <p>{issue.description}</p>
                 </Card>
             </Box>
-            <Box className='space-x-4'>
-                <Button>
-                    <Pencil2Icon/>
-                    <Link href={`/issues/${issue.id}/edit`}>Edit</Link>
-                </Button>
-                <Button>
-                    <TrashIcon/>
-                    Delete
-                </Button>                
-            </Box>
+            
+                <Box>
+                <Flex direction={'column'} gap='4'>
+                    <Button>
+                        <Pencil2Icon/>
+                        <Link href={`/issues/${issue.id}/edit`}>Edit</Link>
+                    </Button>
+                    <Button color='red'>
+                        <TrashIcon/>
+                        Delete
+                    </Button>                
+                    </Flex>
+                </Box>
+
+            
         </Grid>
     )
 }

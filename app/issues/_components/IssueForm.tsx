@@ -4,7 +4,6 @@ import { Button, TextArea, TextField } from '@radix-ui/themes';
 import axios from 'axios';
 import delay from 'delay';
 import { redirect, useRouter } from 'next/navigation';
-// import { useState } from 'react';
 import { SubmitHandler, useForm } from "react-hook-form";
 
 type IssueFormData = {
@@ -22,17 +21,13 @@ const IssueForm = ({issue}: {issue?: Issue}) => {
         formState: { errors },
         } = useForm<IssueFormData>()
 
-    // const [error, setError] = useState('');
-    // const [isSubmitting, setSubmitting] = useState(false);        
     const onSubmit: SubmitHandler<IssueFormData> = async (data) => {
-        // setSubmitting(true);
         if(issue){
             const res = await axios.patch(`/api/issues/${issue.id}`, data)
         }else{
             const res = await axios.post('/api/issues', data)
         }
             
-        // window.location.href = "/issues"
         router.push('/issues')
         router.refresh()
     }
