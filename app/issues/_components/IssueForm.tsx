@@ -26,7 +26,12 @@ const IssueForm = ({issue}: {issue?: Issue}) => {
     // const [isSubmitting, setSubmitting] = useState(false);        
     const onSubmit: SubmitHandler<IssueFormData> = async (data) => {
         // setSubmitting(true);
-        const res = await axios.post('/api/issues', data)
+        if(issue){
+            const res = await axios.patch(`/api/issues/${issue.id}`, data)
+        }else{
+            const res = await axios.post('/api/issues', data)
+        }
+            
         window.location.href = "/issues"
     }
     return (
@@ -35,7 +40,7 @@ const IssueForm = ({issue}: {issue?: Issue}) => {
                 <TextField.Input defaultValue={issue?.title} placeholder="Title" {...register("title")}/>
             </TextField.Root>
             <TextArea placeholder="Description" defaultValue={issue?.description} {...register("description")}/>
-            <Button>Submit</Button>
+            <Button>{issue ? 'Update Issue': 'Submit Issue'}</Button>
         </form>
     )
 }

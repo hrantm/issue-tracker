@@ -7,20 +7,29 @@ const createIssueSchema = z.object({
   description: z.string().min(1)
 })
 
-export async function PATCH(request: NextRequest){
+export async function PATCH(request: NextRequest,
+    {params}: { params: {id: string}}){
     const body = await request.json()
     const validation = createIssueSchema.safeParse(body)
     if (!validation.success){
       return NextResponse.json(validation.error.errors, {status: 400})
     }
-    const newIssue = await prisma.issue.update({
+    const issue = await prisma.issue.findUnique({
         where: {
-            id: body.id
+            id: parseInt(params.id)
+        }
+    })
+    if(!issue){
+        return NextResponse.json({error: 'Inavlid Issue'}, {status: 404})
+    }
+    const updatedIssue = await prisma.issue.update({
+        where: {
+            id: issue.id
         },
         data: {
             title: body.title,
             description: body.description
         }
     })
-    return NextResponse.json(newIssue, {status: 200})
+    return NextResponse.json(updatedIssue, {status: 200})
 }
