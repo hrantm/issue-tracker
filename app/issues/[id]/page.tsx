@@ -2,10 +2,12 @@ import React from 'react'
 import prisma from '@/prisma/client'
 import { notFound } from 'next/navigation'
 import delay from 'delay'
-import { Box, Button, Card, Flex, Grid, Heading, Text } from '@radix-ui/themes'
+import { AlertDialog, Box, Button, Card, Flex, Grid, Heading, Text } from '@radix-ui/themes'
 import IssueStatusBadge from '@/app/components/IssueStatusBadge'
 import Link from 'next/link'
 import { Pencil2Icon, TrashIcon } from '@radix-ui/react-icons'
+import DeleteButton from '../_components/DeleteButton'
+import UpdateButton from '../_components/UpdateButton'
 
 interface Props {
     params: {id: string}
@@ -34,14 +36,8 @@ const IssueDetails = async ({params}: Props) => {
             
                 <Box>
                 <Flex direction={'column'} gap='4'>
-                    <Button>
-                        <Pencil2Icon/>
-                        <Link href={`/issues/${issue.id}/edit`}>Edit</Link>
-                    </Button>
-                    <Button color='red'>
-                        <TrashIcon/>
-                        Delete
-                    </Button>                
+                    <UpdateButton issueId={issue.id}/>
+                    <DeleteButton issueId={issue.id}/>
                     </Flex>
                 </Box>
 
