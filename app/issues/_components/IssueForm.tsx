@@ -32,7 +32,9 @@ const IssueForm = ({issue}: {issue?: Issue}) => {
             const res = await axios.post('/api/issues', data)
         }
             
-        window.location.href = "/issues"
+        // window.location.href = "/issues"
+        router.push('/issues')
+        router.refresh()
     }
     return (
         <form className='max-w-xl space-y-3' onSubmit={handleSubmit(onSubmit)}>
