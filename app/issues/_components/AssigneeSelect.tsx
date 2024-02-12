@@ -13,6 +13,8 @@ const AssigneeSelect = () => {
         retry: 3
     })
         
+    if(error) return null;
+    
     return (
     <Select.Root>
         <Select.Trigger placeholder='Assign...'/>
