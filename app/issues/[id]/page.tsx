@@ -37,7 +37,7 @@ const IssueDetails = async ({params}: Props) => {
             
                 <Box>
                 <Flex direction={'column'} gap='4'>
-                    <AssigneeSelect/>
+                    <AssigneeSelect issue={issue}/>
                     <UpdateButton issueId={issue.id}/>
                     <DeleteButton issueId={issue.id}/>
                     </Flex>
