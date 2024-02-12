@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { Pencil2Icon, TrashIcon } from '@radix-ui/react-icons'
 import DeleteButton from '../_components/DeleteButton'
 import UpdateButton from '../_components/UpdateButton'
+import AssigneeSelect from '../_components/AssigneeSelect'
 
 interface Props {
     params: {id: string}
@@ -36,6 +37,7 @@ const IssueDetails = async ({params}: Props) => {
             
                 <Box>
                 <Flex direction={'column'} gap='4'>
+                    <AssigneeSelect/>
                     <UpdateButton issueId={issue.id}/>
                     <DeleteButton issueId={issue.id}/>
                     </Flex>
