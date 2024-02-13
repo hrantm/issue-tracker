@@ -6,7 +6,7 @@ import React from 'react'
 import prisma from '@/prisma/client'
 import IssueStatusBadge from '../components/IssueStatusBadge'
 import delay from 'delay'
-import IssueActions from './issueActions'
+import IssueActions from './IssueActions'
 
 const IssuesPage = async () => {          
     const issues = await prisma.issue.findMany()
