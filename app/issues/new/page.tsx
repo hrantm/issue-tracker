@@ -1,3 +1,4 @@
+import { Metadata } from 'next'
 import IssueForm from '../_components/IssueForm'
 
 const NewIssuePage = () => {
@@ -7,3 +8,8 @@ const NewIssuePage = () => {
 }
 
 export default NewIssuePage
+
+export const metadata: Metadata = {
+  title: 'Issue Tracker - Create Issue',
+  description: 'Create Issue Page'
+}

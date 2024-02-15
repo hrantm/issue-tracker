@@ -9,6 +9,7 @@ import { Pencil2Icon, TrashIcon } from '@radix-ui/react-icons'
 import DeleteButton from '../_components/DeleteButton'
 import UpdateButton from '../_components/UpdateButton'
 import AssigneeSelect from '../_components/AssigneeSelect'
+import { Metadata } from 'next'
 
 interface Props {
     params: {id: string}
@@ -49,3 +50,8 @@ const IssueDetails = async ({params}: Props) => {
 }
 
 export default IssueDetails
+
+export const metadata: Metadata = {
+    title: 'Issue Tracker - Edit Issue',
+    description: 'Edit Issue Page'
+  }
