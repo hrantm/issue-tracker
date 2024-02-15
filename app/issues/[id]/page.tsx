@@ -16,7 +16,6 @@ interface Props {
 }
 
 const IssueDetails = async ({params}: Props) => {
-    // await delay(2000)
     const issue = await prisma.issue.findFirst({
         where: {id: parseInt(params.id)}
     })    
